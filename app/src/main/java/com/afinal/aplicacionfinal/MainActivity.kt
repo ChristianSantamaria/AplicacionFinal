@@ -13,7 +13,13 @@ import android.view.View
 import android.widget.CalendarView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+<<<<<<< HEAD
 import kotlinx.android.synthetic.main.content_main.*
+=======
+import android.content.Intent
+
+
+>>>>>>> 8b2c6ad3dbcef8dda2b0f24560ce4415a57fcb4c
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -69,6 +75,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
@@ -76,6 +84,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 // Handle the camera action
             }
             R.id.nav_gallery -> {
+                val intent = Intent(this,  MainProductActivity::class.java)
+                startActivity(intent)
             }
             R.id.nav_slideshow -> {
 

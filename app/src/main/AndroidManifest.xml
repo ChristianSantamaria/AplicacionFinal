@@ -19,10 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity
             android:name=".PopupCalendarActivity"
             android:label="@string/title_activity_popup_calendar"
             android:theme="@style/AppTheme.CustomTheme"></activity>
+=======
+        <activity android:name=".MainProductActivity"></activity>
+>>>>>>> 8b2c6ad3dbcef8dda2b0f24560ce4415a57fcb4c
     </application>
 
 </manifest>

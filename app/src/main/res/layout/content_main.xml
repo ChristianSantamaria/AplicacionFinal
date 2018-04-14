@@ -8,10 +8,4 @@
     tools:context="com.afinal.aplicacionfinal.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="16dp" />
 </android.support.constraint.ConstraintLayout>

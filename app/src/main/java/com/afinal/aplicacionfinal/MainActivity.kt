@@ -13,13 +13,9 @@ import android.view.View
 import android.widget.CalendarView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-<<<<<<< HEAD
 import kotlinx.android.synthetic.main.content_main.*
-=======
-import android.content.Intent
 
 
->>>>>>> 8b2c6ad3dbcef8dda2b0f24560ce4415a57fcb4c
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 

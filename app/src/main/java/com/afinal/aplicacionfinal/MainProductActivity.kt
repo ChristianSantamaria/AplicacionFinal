@@ -10,6 +10,8 @@ import kotlinx.android.synthetic.main.product_item_list.*
 import kotlinx.android.synthetic.main.product_main.*
 
 
+
+
 class MainProductActivity() : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +41,8 @@ class MainProductActivity() : AppCompatActivity() {
             db.insertProduct(pPrueba)
         })
 
+
+
         btnRead.setOnClickListener({
             var data = db.readData()
             for (i in 0..(data.size - 1)) {
@@ -46,12 +50,12 @@ class MainProductActivity() : AppCompatActivity() {
             }
         })
 
-        /**
+
         btnDelete.setOnClickListener() {
 
-            System.out.println("Entro")
+
 
         }
-        **/
+
     }
 }

@@ -11,9 +11,6 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 
-/**
- * Created by christian on 15/04/2018.
- */
 
 class CustomAdapter(var context: Context, var product: ArrayList<Product>): BaseAdapter() {
 

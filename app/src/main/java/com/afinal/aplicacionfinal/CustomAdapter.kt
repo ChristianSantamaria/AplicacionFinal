@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import kotlinx.android.synthetic.main.product_item_list.view.*
 
 
 class CustomAdapter(var context: Context, var product: ArrayList<Product>): BaseAdapter() {
@@ -32,11 +33,19 @@ class CustomAdapter(var context: Context, var product: ArrayList<Product>): Base
             view = layaut.inflate(R.layout.product_item_list, parent,false)
             viewHolder = ViewHolder(view)
             view.tag = viewHolder
+            System.out.println("Si")
         }
         else{
             view = convertView
             viewHolder = view.tag as ViewHolder
+            System.out.println("No")
+            view.btnDelete.setOnClickListener{
+
+
+            }
+
         }
+
 
         var product: Product = getItem(position) as Product
         viewHolder.txtName.text = product.name
@@ -46,6 +55,7 @@ class CustomAdapter(var context: Context, var product: ArrayList<Product>): Base
     }
 
     override fun getItem(position: Int): Any {
+        System.out.println(position)
         return product.get(position)
     }
 
@@ -56,8 +66,5 @@ class CustomAdapter(var context: Context, var product: ArrayList<Product>): Base
     override fun getCount(): Int {
         return product.count()
     }
-
-
-
 
 }

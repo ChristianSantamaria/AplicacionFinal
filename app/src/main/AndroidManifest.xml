@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.afinal.aplicacionfinal">
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,7 +26,14 @@
             android:name=".PopupCalendarActivity"
             android:label="@string/title_activity_popup_calendar"
             android:theme="@style/AppTheme.CustomTheme"></activity>
+
+        <activity
+            android:name=".PopupProductActivity"
+            android:label="@string/title_activity_popup_product"
+            android:theme="@style/AppTheme.CustomTheme"></activity>
+
         <activity android:name=".MainProductActivity"></activity>
+
     </application>
 
 </manifest>

@@ -26,6 +26,9 @@ class PopupCalendarActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
         val adapter = ArrayAdapter.createFromResource(this, R.array.foods , android.R.layout.simple_spinner_item)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
+        //val calendar = SimpleDateFormat.getDateInstance(intent.extras["Mes"])
+        //fecha.text = calendar.toString()
+        //fecha.text = getMonth(intent.extras["Mes"] as Int) + " " +  intent.extras["Dia"]
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {}

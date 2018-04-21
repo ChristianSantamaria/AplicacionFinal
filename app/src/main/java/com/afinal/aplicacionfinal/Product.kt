@@ -4,18 +4,24 @@ class Product{
 
     var id : Int = 0
     var name : String = ""
-    var price : Int = 0
+    var price : Float = 0F
     var duration : Int = 0
+    var type : String = ""
     var image : Int = 0
 
-    constructor(name:String, price:Int, duration:Int, image:Int){
+    constructor(name: String, price: Float, duration: Int, type: String, image: Int) {
         this.name = name
         this.price = price
         this.duration = duration
+        this.type = type
         this.image = image
     }
 
-    constructor(){
+    constructor(){}
+
+
+    override fun toString(): String {
+        return "Product(id=$id, name='$name', price=$price, duration=$duration, image=$image)"
     }
 
 }

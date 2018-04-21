@@ -15,6 +15,8 @@ import kotlinx.android.synthetic.main.product_item_list.view.*
 
 class CustomAdapter(var context: Context, var product: ArrayList<Product>): BaseAdapter() {
 
+    var db = DataBaseHandler(context)
+
     private class ViewHolder(row: View?){
         var txtName: TextView
         var imageProduct: ImageView
@@ -40,8 +42,8 @@ class CustomAdapter(var context: Context, var product: ArrayList<Product>): Base
             viewHolder = view.tag as ViewHolder
             System.out.println("No")
             view.btnDelete.setOnClickListener{
-
-
+                System.out.println("Pinchaste en el: " + position)
+                db.deleteProduct(position)
             }
 
         }

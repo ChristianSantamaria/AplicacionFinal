@@ -31,14 +31,14 @@ class PopupCalendarActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
         var arrProduct: ArrayList<Product> = ArrayList()
-        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
-        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
-        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
-        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
-        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
-        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
-        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
-        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
+//        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
+//        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
+//        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
+//        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
+//        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
+//        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
+//        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
+//        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
         showfood.adapter = CustomAdapter(applicationContext, arrProduct)
         Log.d("SELECTED:", spinner.getItemAtPosition(position).toString())
     }

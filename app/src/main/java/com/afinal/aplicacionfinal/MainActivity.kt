@@ -14,6 +14,10 @@ import android.widget.CalendarView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import com.applandeo.materialcalendarview.EventDay
+import java.util.*
+import com.applandeo.materialcalendarview.listeners.OnDayClickListener
+
 
 
 
@@ -36,12 +40,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
 
+        val events = ArrayList<EventDay>()
+        val calendar = Calendar.getInstance()
+        events.add(EventDay(calendar, R.drawable.coffes))
+        calendario.setEvents(events)
 
-        calendarView.setOnDateChangeListener(object:CalendarView.OnDateChangeListener {
-            override fun onSelectedDayChange(p0: CalendarView?, year: Int, month: Int, day: Int) {
-                val intent = Intent(baseContext, PopupCalendarActivity::class.java)
-                startActivity(intent)
-            }
+        calendario.setOnDayClickListener(OnDayClickListener { eventDay -> val clickedDayCalendar = eventDay.calendar
+            val intent = Intent(baseContext, PopupCalendarActivity::class.java)
+            val selectedDate = calendario.getFirstSelectedDate();
+            intent.putExtra("Mes", selectedDate.time)
+            startActivity(intent)
         })
     }
 

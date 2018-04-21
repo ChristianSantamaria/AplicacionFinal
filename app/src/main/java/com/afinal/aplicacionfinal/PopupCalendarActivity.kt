@@ -8,7 +8,8 @@ import android.view.View
 import android.widget.AdapterView
 import kotlinx.android.synthetic.main.activity_popup_calendar.*
 import android.widget.ArrayAdapter
-
+import java.text.DateFormatSymbols
+import java.text.SimpleDateFormat
 
 class PopupCalendarActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener  {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +32,7 @@ class PopupCalendarActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
         var arrProduct: ArrayList<Product> = ArrayList()
+<<<<<<< HEAD
 //        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
 //        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
 //        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
@@ -39,8 +41,23 @@ class PopupCalendarActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
 //        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
 //        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
 //        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
+=======
+        arrProduct.add(Product("Zanahorias", 2f, 4, "lacteo", R.drawable.carrots))
+        arrProduct.add(Product("Zanahorias", 2f, 4,"lacteo", R.drawable.carrots))
+        arrProduct.add(Product("Zanahorias", 2f, 4,"lacteo", R.drawable.carrots))
+        arrProduct.add(Product("Zanahorias", 2f, 4,"lacteo", R.drawable.carrots))
+        arrProduct.add(Product("Zanahorias", 2f, 4,"lacteo", R.drawable.carrots))
+        arrProduct.add(Product("Zanahorias", 2f, 4,"lacteo", R.drawable.carrots))
+        arrProduct.add(Product("Zanahorias", 2f, 4,"lacteo", R.drawable.carrots))
+        arrProduct.add(Product("Zanahorias", 2f, 4,"lacteo", R.drawable.carrots))
+>>>>>>> origin/master
         showfood.adapter = CustomAdapter(applicationContext, arrProduct)
         Log.d("SELECTED:", spinner.getItemAtPosition(position).toString())
     }
+
+    fun getMonth(month: Int): String {
+        return DateFormatSymbols().months[month]
+    }
+
 
 }

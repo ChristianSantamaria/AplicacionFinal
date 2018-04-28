@@ -10,15 +10,12 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.CalendarView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
-import com.applandeo.materialcalendarview.EventDay
 import java.util.*
+import com.applandeo.materialcalendarview.EventDay
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener
-
-
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -42,13 +39,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val events = ArrayList<EventDay>()
         val calendar = Calendar.getInstance()
-        events.add(EventDay(calendar, R.drawable.coffes))
+        events.add(EventDay(calendar, R.drawable.sample_icon_1))
+
+        val calendar1 = Calendar.getInstance()
+        calendar1.add(Calendar.DAY_OF_MONTH, 2)
+        events.add(EventDay(calendar1, R.drawable.coffes))
+
         calendario.setEvents(events)
 
         calendario.setOnDayClickListener(OnDayClickListener { eventDay -> val clickedDayCalendar = eventDay.calendar
             val intent = Intent(baseContext, PopupCalendarActivity::class.java)
-            val selectedDate = calendario.getFirstSelectedDate();
-            intent.putExtra("Mes", selectedDate.time)
+            intent.putExtra("Mes", clickedDayCalendar)
             startActivity(intent)
         })
     }

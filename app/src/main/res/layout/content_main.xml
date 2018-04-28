@@ -11,10 +11,9 @@
     <com.applandeo.materialcalendarview.CalendarView
         android:id="@+id/calendario"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:headerColor="@color/colorPrimary"
         app:abbreviationsLabelsColor="@color/background"
-        app:type="one_day_picker"
         />
 
 </android.support.constraint.ConstraintLayout>

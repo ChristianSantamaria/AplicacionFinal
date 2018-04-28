@@ -22,7 +22,7 @@ class PopupCalendarActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
         val height = dm.heightPixels
         window.setLayout((width*.8).toInt(), (height*.8).toInt())
 
-        spinner!!.setOnItemSelectedListener(this)
+        spinner!!.onItemSelectedListener = this
         val adapter = ArrayAdapter.createFromResource(this, R.array.foods , android.R.layout.simple_spinner_item)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter

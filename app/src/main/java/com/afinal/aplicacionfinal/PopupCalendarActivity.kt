@@ -35,16 +35,6 @@ class PopupCalendarActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
         var arrProduct: ArrayList<Product> = ArrayList()
-<<<<<<< HEAD
-//        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
-//        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
-//        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
-//        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
-//        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
-//        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
-//        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
-//        arrProduct.add(Product("Zanahorias", 2, 4, R.drawable.carrots))
-=======
         arrProduct.add(Product("Zanahorias", 2f, 4, "lacteo", R.drawable.carrots))
         arrProduct.add(Product("Zanahorias", 2f, 4,"lacteo", R.drawable.carrots))
         arrProduct.add(Product("Zanahorias", 2f, 4,"lacteo", R.drawable.carrots))
@@ -53,7 +43,7 @@ class PopupCalendarActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
         arrProduct.add(Product("Zanahorias", 2f, 4,"lacteo", R.drawable.carrots))
         arrProduct.add(Product("Zanahorias", 2f, 4,"lacteo", R.drawable.carrots))
         arrProduct.add(Product("Zanahorias", 2f, 4,"lacteo", R.drawable.carrots))
->>>>>>> origin/master
+
         showfood.adapter = CustomAdapter(applicationContext, arrProduct)
         Log.d("SELECTED:", spinner.getItemAtPosition(position).toString())
     }

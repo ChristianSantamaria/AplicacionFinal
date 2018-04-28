@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PopupProductActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn1"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:background="@drawable/cabbages" />
+
+            <Button
+                android:id="@+id/btn2"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:background="@drawable/carrots" />
+
+            <Button
+                android:id="@+id/btn3"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:background="@drawable/breads" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn4"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:background="@drawable/milk" />
+
+            <Button
+                android:id="@+id/btn5"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:background="@drawable/cheeses" />
+
+            <Button
+                android:id="@+id/btn6"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:background="@drawable/coffes" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn7"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:background="@drawable/fish" />
+
+            <Button
+                android:id="@+id/btn8"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:background="@drawable/steaks" />
+
+            <Button
+                android:id="@+id/btn9"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:background="@drawable/eggs" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn10"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:background="@drawable/bar" />
+
+            <Button
+                android:id="@+id/btn11"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:background="@drawable/beers" />
+
+            <Button
+                android:id="@+id/btn12"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:background="@drawable/waters" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -9,6 +9,15 @@ class Product{
     var type : String = ""
     var image : Int = 0
 
+    constructor(id: Int, name: String, price: Float, duration: Int, type: String, image: Int) {
+        this.id = id
+        this.name = name
+        this.price = price
+        this.duration = duration
+        this.type = type
+        this.image = image
+    }
+
     constructor(name: String, price: Float, duration: Int, type: String, image: Int) {
         this.name = name
         this.price = price

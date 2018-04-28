@@ -3,54 +3,65 @@ package com.afinal.aplicacionfinal
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.widget.ListView
-import com.afinal.aplicacionfinal.R.id.container
-import com.afinal.aplicacionfinal.R.id.listView
-import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.product_item_list.*
 import kotlinx.android.synthetic.main.product_main.*
 
 
 class MainProductActivity() : AppCompatActivity() {
 
-//    var listView = findViewById<ListView>(R.id.listView) as ListView
     var arrProduct: ArrayList<Product> = ArrayList()
-    var adapter:CustomAdapter?=null
+    var adapter: CustomAdapter?=null
+
+    //Llamamos a la base de datos
+    val context = this
+    var db = DataBaseHandler(context)
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.product_main)
 
-        //Llamamos a la base de datos
-        val context = this
-        var db = DataBaseHandler(context)
-
         //db.deleteAllProduct();
 
-        //Cargamos todos los productos
-        var data = db.readData()
+        var arrEmpy: ArrayList<Product> = ArrayList()
+        listView.adapter = CustomAdapter(applicationContext, arrEmpy)
+
+//        Cargamos todos los productos
+        var data = db.readProduct()
+
         for (i in 0..(data.size - 1)) {
             System.out.println(data.get(i).id.toString() + " " + data.get(i).name + " " + data.get(i).price + " " + data.get(i).duration + " " + data.get(i).type + " " + data.get(i).image + "\n")
-            var OldProduct: Product = Product(data.get(i).name , data.get(i).price, data.get(i).duration, data.get(i).type, data.get(i).image);
+            var OldProduct: Product = Product(data.get(i).id, data.get(i).name , data.get(i).price, data.get(i).duration, data.get(i).type, data.get(i).image);
             arrProduct.add(OldProduct);
             listView.adapter = CustomAdapter(applicationContext, arrProduct)
         }
 
         btnNewProduct.setOnClickListener({
-//            val intent = Intent(baseContext, PopupProductActivity::class.java)
-//            startActivity(intent)
-//            var pPrueba: Product = Product("Pechuga de cerdo", 10F, 30, "Carne", R.drawable.steaks)
-            var pPrueba: Product = Product("Rapante", 9F, 5, "Carne", R.drawable.fish)
-            arrProduct.add(pPrueba)
+            val intent = Intent(baseContext, PopupProductActivity::class.java)
+            startActivity(intent)
 
-            listView.adapter = CustomAdapter(applicationContext, arrProduct)
-            db.insertProduct(pPrueba)
         })
 
 
+        btnDelete?.setOnClickListener({
+            var data = db.readProduct()
+
+            for (i in 0..(data.size - 1)) {
+                System.out.println(data.get(i).id.toString() + " " + data.get(i).name + " " + data.get(i).price + " " + data.get(i).duration + " " + data.get(i).type + " " + data.get(i).image + "\n")
+                var OldProduct: Product = Product(data.get(i).id, data.get(i).name , data.get(i).price, data.get(i).duration, data.get(i).type, data.get(i).image);
+                arrProduct.add(OldProduct);
+                listView.adapter = CustomAdapter(applicationContext, arrProduct)
+            }
+        })
+    }
 
 
+    fun createProduct(name: String, price: Float, duration: Int, type: String, icon: Int){
+        var pPrueba: Product = Product(name, price, duration, type, icon)
 
+        db.insertProduct(pPrueba)
+
+        arrProduct.add(pPrueba)
+        listView.adapter = CustomAdapter(applicationContext, arrProduct)
     }
 }

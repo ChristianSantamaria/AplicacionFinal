@@ -15,7 +15,11 @@ import android.widget.Spinner
 import kotlinx.android.synthetic.main.activity_popup_calendar.*
 import kotlinx.android.synthetic.main.popup_product.*
 
+import com.afinal.aplicacionfinal.MainProductActivity.*
+
 class PopupProductActivity : AppCompatActivity() {
+
+    var newProduct :Product = Product()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,11 +37,19 @@ class PopupProductActivity : AppCompatActivity() {
             }
         }
 
+        btnIcon.setOnClickListener(){
+            val intent = Intent(baseContext, PopupProductIconsActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnAddProduct.setOnClickListener(){
+
+        }
+
         val dm = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(dm)
         val width = dm.widthPixels
         val height = dm.heightPixels
         window.setLayout((width*.8).toInt(), (height*.8).toInt())
     }
-
 }

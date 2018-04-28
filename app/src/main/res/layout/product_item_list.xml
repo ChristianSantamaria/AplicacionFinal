@@ -45,4 +45,5 @@
         android:textColor="@android:color/holo_red_dark"
         android:textSize="36sp"
         android:textStyle="bold" />
+
 </RelativeLayout>

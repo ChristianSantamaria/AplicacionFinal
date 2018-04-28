@@ -32,6 +32,11 @@
             android:label="@string/title_activity_popup_product"
             android:theme="@style/AppTheme.CustomTheme"></activity>
 
+        <activity
+            android:name=".PopupProductIconsActivity"
+            android:label="@string/title_activity_popup_product_icons"
+            android:theme="@style/AppTheme.CustomTheme"></activity>
+
         <activity android:name=".MainProductActivity"></activity>
 
     </application>

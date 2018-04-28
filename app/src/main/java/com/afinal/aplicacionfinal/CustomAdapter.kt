@@ -1,7 +1,10 @@
 package com.afinal.aplicacionfinal
 
 import android.content.Context
+import android.content.Intent
 import android.support.annotation.NonNull
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +14,9 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import kotlinx.android.synthetic.main.product_item_list.view.*
+import android.support.v4.content.ContextCompat.startActivity
+
+
 
 
 class CustomAdapter(var context: Context, var product: ArrayList<Product>): BaseAdapter() {
@@ -36,6 +42,10 @@ class CustomAdapter(var context: Context, var product: ArrayList<Product>): Base
             viewHolder = ViewHolder(view)
             view.tag = viewHolder
             System.out.println("Si")
+            view.btnDelete.setOnClickListener{
+                System.out.println("Pinchaste en el: " + position)
+                db.deleteProduct(position + 1)
+            }
         }
         else{
             view = convertView
@@ -43,11 +53,9 @@ class CustomAdapter(var context: Context, var product: ArrayList<Product>): Base
             System.out.println("No")
             view.btnDelete.setOnClickListener{
                 System.out.println("Pinchaste en el: " + position)
-                db.deleteProduct(position)
+                db.deleteProduct(position + 1)
             }
-
         }
-
 
         var product: Product = getItem(position) as Product
         viewHolder.txtName.text = product.name

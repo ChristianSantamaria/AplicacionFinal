@@ -13,9 +13,15 @@ class Rutina : AppCompatActivity() {
 
         newDay.setOnClickListener {
             val intent = Intent(this,  NuevoDiaRutina::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, 0)
         }
 
+        @Override
+        fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent){
+            if (data != null) {
+                data.getStringExtra("rutinaSeleccionada")
+            }
+        }
 
     }
 }

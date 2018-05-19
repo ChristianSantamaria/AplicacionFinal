@@ -1,5 +1,6 @@
 package com.afinal.aplicacionfinal
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_nuevo_dia_rutina.*
@@ -28,10 +29,17 @@ class NuevoDiaRutina : AppCompatActivity() {
         agregarCena.setOnClickListener {
             agregarProducto(p1,"Cena")
         }
+
+        guardarRutina.setOnClickListener {
+            var resultData = Intent()
+            resultData.putExtra("rutinaSeleccionada", "")
+            setResult(RESULT_OK, resultData)
+            finish()
+        }
     }
     fun agregarProducto(producto: Product, tipo: String) {
         //db.insertarCualquierComida(producto,tipo)
-        
+
     }
 
 }

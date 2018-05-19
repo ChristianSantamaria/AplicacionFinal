@@ -7,10 +7,12 @@ import kotlinx.android.synthetic.main.activity_nuevo_dia_rutina.*
 
 class NuevoDiaRutina : AppCompatActivity() {
     var db = DataBaseHandler(this)
+    var comidas = ArrayList<Product>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nuevo_dia_rutina)
+
         var p1 = Product("Zanahorias", 2f, 4, "lacteo", R.drawable.carrots)
 
         agregarDesayuno.setOnClickListener {
@@ -24,7 +26,6 @@ class NuevoDiaRutina : AppCompatActivity() {
         }
         agregarMerienda.setOnClickListener {
             agregarProducto(p1,"Merienda")
-
         }
         agregarCena.setOnClickListener {
             agregarProducto(p1,"Cena")
@@ -32,14 +33,20 @@ class NuevoDiaRutina : AppCompatActivity() {
 
         guardarRutina.setOnClickListener {
             var resultData = Intent()
-            resultData.putExtra("rutinaSeleccionada", "")
+            resultData.putExtra("rutinaSeleccionada", comidas)
             setResult(RESULT_OK, resultData)
             finish()
         }
     }
     fun agregarProducto(producto: Product, tipo: String) {
         //db.insertarCualquierComida(producto,tipo)
-
+        when(tipo) {
+            "Desayuno"    -> comidas.add(producto)
+            "Almuerzo"    -> comidas.add(producto)
+            "Comida"      -> comidas.add(producto)
+            "Merienda"    -> comidas.add(producto)
+            "Cena"        -> comidas.add(producto)
+        }
     }
 
 }

@@ -26,6 +26,17 @@ class MainProductActivity() : AppCompatActivity() {
         var arrEmpy: ArrayList<Product> = ArrayList()
         listView.adapter = CustomAdapter(applicationContext, arrEmpy)
 
+        var pPrueba: Product = Product("Cordero", 10.5f, 20, "", R.drawable.steaks)
+        var pPrueba2: Product = Product("Salmon", 8.5f, 20, "", R.drawable.fish)
+        var pPrueba3: Product = Product("Lechuga", 3.5f, 20, "", R.drawable.cabbages)
+        var pPrueba4: Product = Product("Leche", 4.5f, 20, "", R.drawable.milk)
+        var pPrueba5: Product = Product("Pan", 1f, 20, "", R.drawable.breads)
+        db.insertProduct(pPrueba)
+        db.insertProduct(pPrueba2)
+        db.insertProduct(pPrueba3)
+        db.insertProduct(pPrueba4)
+        db.insertProduct(pPrueba4)
+
 //        Cargamos todos los productos
         var data = db.readProduct()
 

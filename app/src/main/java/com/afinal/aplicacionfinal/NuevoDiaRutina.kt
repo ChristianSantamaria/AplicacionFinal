@@ -5,6 +5,7 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_nuevo_dia_rutina.*
 
 class NuevoDiaRutina : AppCompatActivity() {
+    var db = DataBaseHandler(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +30,7 @@ class NuevoDiaRutina : AppCompatActivity() {
         }
     }
     fun agregarProducto(producto: Product, tipo: String) {
+        //db.insertarCualquierComida(producto,tipo)
         
     }
 

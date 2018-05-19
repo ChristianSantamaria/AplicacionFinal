@@ -21,7 +21,7 @@ val DATABASE_NAME ="DataBase"
 val TABLE_RUTINA_MODELO="RutinaModelo"
 val COL_ORDEN = "Fecha"
 val COL_ID_DESAYUNO = "Id_Desayuno"
-val COL_ID_ALMUERZO = "Id_Merienda"
+val COL_ID_ALMUERZO = "Id_Almuerzo"
 val COL_ID_COMIDA = "Id_Comida"
 val COL_ID_MERIENDA = "Id_Merienda"
 val COL_ID_CENA = "Id_Cena"
@@ -32,7 +32,7 @@ var COL_ID = "Id"
 val TABLE_RUTINA="Rutina"
 val COL_FECHA = "Fecha"
 //val COL_ID_DESAYUNO = "Id_Desayuno"
-//val COL_ID_ALMUERZO = "Id_Merienda"
+//val COL_ID_ALMUERZO = "Id_Almuerzo"
 //val COL_ID_COMIDA = "Id_Comida"
 //val COL_ID_MERIENDA = "Id_Merienda"
 //val COL_ID_CENA = "Id_Cena"
@@ -89,7 +89,7 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(context,DATABASE_
                 COL_ID_COMIDA + " INTEGER," +
                 COL_ID_MERIENDA + " INTEGER," +
                 COL_ID_CENA + " INTEGER);"
-        db?.execSQL(crearTablaRutina)
+        db?.execSQL(crearTablaRutinaModelo)
 
         //Creacion tabla desayuno
         val crearTablaDesayuno = "CREATE TABLE IF NOT EXISTS " + TABLE_DESAYUNO +" (" +

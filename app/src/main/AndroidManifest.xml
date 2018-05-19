@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.afinal.aplicacionfinal">
 
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -25,20 +25,18 @@
         <activity
             android:name=".PopupCalendarActivity"
             android:label="@string/title_activity_popup_calendar"
-            android:theme="@style/AppTheme.CustomTheme"></activity>
-
+            android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".PopupProductActivity"
             android:label="@string/title_activity_popup_product"
-            android:theme="@style/AppTheme.CustomTheme"></activity>
-
+            android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".PopupProductIconsActivity"
             android:label="@string/title_activity_popup_product_icons"
-            android:theme="@style/AppTheme.CustomTheme"></activity>
-
-        <activity android:name=".MainProductActivity"></activity>
-
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity android:name=".MainProductActivity" />
+        <activity android:name=".Rutina" />
+        <activity android:name=".NuevoDiaRutina"></activity>
     </application>
 
 </manifest>

@@ -28,6 +28,30 @@ class Product{
 
     constructor(){}
 
+    fun setid(id: Int){
+        this.id = id
+    }
+
+    fun setname(name: String){
+        this.name = name
+    }
+
+    fun setprice(price: Float){
+        this.price = price
+    }
+
+    fun setduration(duration: Int){
+        this.duration = duration
+    }
+
+    fun settype(type: String){
+        this.type = type
+    }
+
+    fun setimage(image: Int){
+        this.image = image
+    }
+
 
     override fun toString(): String {
         return "Product(id=$id, name='$name', price=$price, duration=$duration, image=$image)"

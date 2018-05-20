@@ -32,27 +32,27 @@ class NuevoDiaRutina : AppCompatActivity() {
         var p1 = Product("Zanahorias", 2f, 4, "lacteo", R.drawable.carrots)
 
         agregarDesayuno.setOnClickListener {
-            //val intent = Intent(this,  MainProductActivity::class.java)
-            //startActivityForResult(intent, request_code)
+            val intent = Intent(this,  ListadoProductos::class.java)
+            startActivityForResult(intent, request_code)
             agregarProducto(p1,"Desayuno" )
         }
         agregarAlmuerzo.setOnClickListener {
-            //val intent = Intent(this,  MainProductActivity::class.java)
+            //val intent = Intent(this,  ListadoProductos::class.java)
             //startActivityForResult(intent, request_code)
             agregarProducto(p1,"Almuerzo")
         }
         agregarComida.setOnClickListener {
-            //val intent = Intent(this,  MainProductActivity::class.java)
+            //val intent = Intent(this,  ListadoProductos::class.java)
             //startActivityForResult(intent, request_code)
             agregarProducto(p1,"Comida")
         }
         agregarMerienda.setOnClickListener {
-            //val intent = Intent(this,  MainProductActivity::class.java)
+            //val intent = Intent(this,  ListadoProductos::class.java)
             //startActivityForResult(intent, request_code)
             agregarProducto(p1,"Merienda")
         }
         agregarCena.setOnClickListener {
-            //val intent = Intent(this,  MainProductActivity::class.java)
+            //val intent = Intent(this,  ListadoProductos::class.java)
             //startActivityForResult(intent, request_code)
             agregarProducto(p1,"Cena")
         }

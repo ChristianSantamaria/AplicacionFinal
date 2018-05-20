@@ -39,38 +39,48 @@ class CustomAdapterListado(var context: Context, var product: ArrayList<Product>
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         var view: View?
         var viewHolder: ViewHolder
-        if(convertView == null){
+        try {
+            if(convertView == null){
+                var layaut = LayoutInflater.from(context)
+                view = layaut.inflate(R.layout.plantilla_elemento_listado_productos, parent,false)
+                viewHolder = ViewHolder(view)
+                view.tag = viewHolder
+
+                view.setOnClickListener {
+                    System.out.println("Pinchaste en el: " + position)
+
+                    var productoAñadirLista = db.leerProducto(position)
+                    System.out.println(productoAñadirLista.toString())
+
+                    ListadoProductos().devolverValor(productoAñadirLista)
+                }
+            }
+            else{
+                view = convertView
+                viewHolder = view.tag as ViewHolder
+
+                view.setOnClickListener {
+                    System.out.println("Pinchaste en el: " + position)
+
+                    var productoAñadirLista = db.leerProducto(position)
+                    System.out.println(productoAñadirLista.toString())
+
+                    ListadoProductos().devolverValor(productoAñadirLista)
+                }
+            }
+
+            var product: Product = getItem(position) as Product
+            viewHolder.txtName.text = product.name
+            viewHolder.imageProduct.setImageResource(product.image)
+
+            return view as View
+        }
+        catch (e: NullPointerException) {
             var layaut = LayoutInflater.from(context)
             view = layaut.inflate(R.layout.plantilla_elemento_listado_productos, parent,false)
-            viewHolder = ViewHolder(view)
-            view.tag = viewHolder
-
-            view.setOnClickListener {
-                System.out.println("Pinchaste en el: " + position)
-//                ListadoProductos().devolverValor(position)
-
-            }
-        }
-        else{
-            view = convertView
-            viewHolder = view.tag as ViewHolder
-            view.setOnClickListener {
-                System.out.println("Pinchaste en el: " + position)
-
-                var resultData = Intent(context, NuevoDiaRutina::class.java).apply {
-                    putExtra(position.toString(), product)
-                }
-
-                ListadoProductos().setResult(Activity.RESULT_OK, resultData)
-                ListadoProductos().finish()
-            }
+            return view as View
         }
 
-        var product: Product = getItem(position) as Product
-        viewHolder.txtName.text = product.name
-        viewHolder.imageProduct.setImageResource(product.image)
-
-        return view as View
     }
 
     override fun getItem(position: Int): Any {

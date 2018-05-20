@@ -5,9 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.plantilla_listado_productos.*
-
-
-
+import android.database.sqlite.SQLiteDatabase
 
 class ListadoProductos() : AppCompatActivity() {
 
@@ -15,8 +13,8 @@ class ListadoProductos() : AppCompatActivity() {
     var adapter: CustomAdapterListado?=null
 
     //Llamamos a la base de datos
-    val context = this
-    var db = DataBaseHandler(context)
+
+    var db = DataBaseHandler(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -35,13 +33,10 @@ class ListadoProductos() : AppCompatActivity() {
 
     }
 
-    fun devolverValor(valor : Int){
+    fun devolverValor(productoAñadirLista : Product){
 
-        var productoAñadirLista : Product
-        productoAñadirLista = db.leerProducto(valor)
-        var resultData = Intent(context, NuevoDiaRutina::class.java).apply {
-            putExtra("producto", productoAñadirLista)
-        }
+        var resultData = Intent(this, NuevoDiaRutina::class.java)
+        resultData.putExtra("producto", productoAñadirLista)
 
         setResult(Activity.RESULT_OK, resultData)
         finish()

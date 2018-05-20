@@ -307,19 +307,23 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(context,DATABASE_
     fun leerProducto(Id : Int) : Product{
         var productoVer = Product()
 
-        val db = this.readableDatabase
+        val db = readableDatabase
         val query = "Select * from " + TABLE_PRODUCT + " where " + COL_ID_PRODUCT + " = " + Id
-        val result = db.rawQuery(query,null)
+        val cursor = db.rawQuery(query,null)
+        if(cursor.moveToFirst()){
+            do {
+                productoVer.id = cursor.getString(cursor.getColumnIndex(COL_ID_PRODUCT)).toInt()
+                productoVer.name = cursor.getString(cursor.getColumnIndex(COL_NAME_PRODUCT))
+                productoVer.price = cursor.getString(cursor.getColumnIndex(COL_PRICE)).toFloat()
+                productoVer.duration = cursor.getString(cursor.getColumnIndex(COL_DURATION)).toInt()
+                productoVer.type = cursor.getString(cursor.getColumnIndex(COL_TYPE))
+                productoVer.image = cursor.getString(cursor.getColumnIndex(COL_IMAGE)).toInt()
+            }while (cursor.moveToNext())
+        }
+        cursor.close()
 
-        productoVer.id = result.getString(result.getColumnIndex(COL_ID_PRODUCT)).toInt()
-        productoVer.name = result.getString(result.getColumnIndex(COL_NAME_PRODUCT))
-        productoVer.price = result.getString(result.getColumnIndex(COL_PRICE)).toFloat()
-        productoVer.duration = result.getString(result.getColumnIndex(COL_DURATION)).toInt()
-        productoVer.type = result.getString(result.getColumnIndex(COL_TYPE))
-        productoVer.image = result.getString(result.getColumnIndex(COL_IMAGE)).toInt()
         System.out.println(productoVer)
 
-        result.close()
         db.close()
         return productoVer
     }

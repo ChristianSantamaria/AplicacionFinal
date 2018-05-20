@@ -1,6 +1,5 @@
 package com.afinal.aplicacionfinal
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -10,9 +9,6 @@ import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_rutina.*
 import java.text.SimpleDateFormat
 import java.util.*
-import com.afinal.aplicacionfinal.R.id.fecha
-
-
 
 class Rutina : AppCompatActivity() {
     var comidas = ArrayList<String>()
@@ -88,11 +84,12 @@ class Rutina : AppCompatActivity() {
     fun cargarDatos(dtrutina: ArrayList<dtrutina>) {
         rutinas = dtrutina
         rutinas.forEach {
-            val calendar = Calendar.getInstance()
-            calendar.add(Calendar.DAY_OF_YEAR, it.day)
-            var dateformated = SimpleDateFormat("dd/MM/yyyy")
-            var fecha= dateformated.format(calendar.time)
-            dias.add(fecha)
+            //val calendar = Calendar.getInstance()
+            //calendar.add(Calendar.DAY_OF_YEAR, it.day)
+            //var dateformated = SimpleDateFormat("dd/MM/yyyy")
+            //var fecha= dateformated.format(calendar.time)
+            //dias.add(fecha)
+            dias.add(it.day.toString())
         }
 
         val d = ArrayAdapter(this, android.R.layout.simple_spinner_item, dias)

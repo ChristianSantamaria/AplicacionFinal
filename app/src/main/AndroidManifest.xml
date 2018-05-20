@@ -37,6 +37,7 @@
         <activity android:name=".MainProductActivity" />
         <activity android:name=".Rutina" />
         <activity android:name=".NuevoDiaRutina"></activity>
+        <activity android:name=".ListadoProductos"></activity>
     </application>
 
 </manifest>

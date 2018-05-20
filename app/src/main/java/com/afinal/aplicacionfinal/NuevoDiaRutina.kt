@@ -2,8 +2,10 @@ package com.afinal.aplicacionfinal
 
 import android.app.Activity
 import android.content.Intent
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import kotlinx.android.synthetic.main.activity_nuevo_dia_rutina.*
 import java.util.*
 
@@ -20,11 +22,13 @@ class NuevoDiaRutina : AppCompatActivity() {
     var p1 = Product()
     var dia = 0
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nuevo_dia_rutina)
         dia = intent.extras.getInt("day")
         labelDia.text = dia.toString()
+
         var p1 = Product("Zanahorias", 2f, 4, "lacteo", R.drawable.carrots)
 
         agregarDesayuno.setOnClickListener {
@@ -83,5 +87,4 @@ class NuevoDiaRutina : AppCompatActivity() {
             "Cena" -> cena.productos.add(producto)
         }
     }
-
 }

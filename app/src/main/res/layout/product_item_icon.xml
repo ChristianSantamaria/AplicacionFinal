@@ -17,21 +17,21 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn1"
+                android:id="@+id/btnVegetal"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_weight="1"
                 android:background="@drawable/cabbages" />
 
             <Button
-                android:id="@+id/btn2"
+                android:id="@+id/btnZanahoria"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_weight="1"
                 android:background="@drawable/carrots" />
 
             <Button
-                android:id="@+id/btn3"
+                android:id="@+id/btnPan"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
@@ -45,21 +45,21 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn4"
+                android:id="@+id/tbnLeche"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_weight="1"
                 android:background="@drawable/milk" />
 
             <Button
-                android:id="@+id/btn5"
+                android:id="@+id/btnQueso"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_weight="1"
                 android:background="@drawable/cheeses" />
 
             <Button
-                android:id="@+id/btn6"
+                android:id="@+id/btnCafe"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_weight="1"
@@ -72,21 +72,21 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn7"
+                android:id="@+id/btnPescado"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_weight="1"
                 android:background="@drawable/fish" />
 
             <Button
-                android:id="@+id/btn8"
+                android:id="@+id/btnCarne"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_weight="1"
                 android:background="@drawable/steaks" />
 
             <Button
-                android:id="@+id/btn9"
+                android:id="@+id/btnHuevos"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_weight="1"
@@ -99,21 +99,21 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn10"
+                android:id="@+id/btnVino"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_weight="1"
                 android:background="@drawable/bar" />
 
             <Button
-                android:id="@+id/btn11"
+                android:id="@+id/btnCerveza"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_weight="1"
                 android:background="@drawable/beers" />
 
             <Button
-                android:id="@+id/btn12"
+                android:id="@+id/btnAgua"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_weight="1"

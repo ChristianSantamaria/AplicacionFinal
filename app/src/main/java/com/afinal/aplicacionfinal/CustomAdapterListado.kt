@@ -1,6 +1,7 @@
-package com.afinal.aplicacionfinal
+package com.afinal.aplicacionfinal;
 
 import android.app.Activity
+import android.app.ListActivity
 import android.content.Context
 import android.content.Intent
 import android.support.annotation.NonNull
@@ -14,11 +15,14 @@ import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import kotlinx.android.synthetic.main.product_item_list.view.*
+
+
+
+import kotlinx.android.synthetic.main.plantilla_elemento_listado_productos.view.*
 import android.support.v4.content.ContextCompat.startActivity
+import java.sql.SQLOutput
 
-
-class CustomAdapter(var context: Context, var product: ArrayList<Product>): BaseAdapter() {
+class CustomAdapterListado(var context: Context, var product: ArrayList<Product>) : BaseAdapter() {
 
     var db = DataBaseHandler(context)
 
@@ -37,34 +41,28 @@ class CustomAdapter(var context: Context, var product: ArrayList<Product>): Base
         var viewHolder: ViewHolder
         if(convertView == null){
             var layaut = LayoutInflater.from(context)
-            view = layaut.inflate(R.layout.product_item_list, parent,false)
+            view = layaut.inflate(R.layout.plantilla_elemento_listado_productos, parent,false)
             viewHolder = ViewHolder(view)
             view.tag = viewHolder
-            System.out.println("Si")
 
             view.setOnClickListener {
                 System.out.println("Pinchaste en el: " + position)
-            }
+//                ListadoProductos().devolverValor(position)
 
-            view.btnDelete.setOnClickListener{
-                System.out.println("Pinchaste en el: " + position)
-                db.deleteProduct(position + 1)
-                product.removeAt(position)
-                notifyDataSetChanged()
             }
         }
         else{
             view = convertView
             viewHolder = view.tag as ViewHolder
-            System.out.println("No")
-
             view.setOnClickListener {
                 System.out.println("Pinchaste en el: " + position)
-            }
 
-            view.btnDelete.setOnClickListener{
-                System.out.println("Pinchaste en el: " + position)
-                db.deleteProduct(position + 1)
+                var resultData = Intent(context, NuevoDiaRutina::class.java).apply {
+                    putExtra(position.toString(), product)
+                }
+
+                ListadoProductos().setResult(Activity.RESULT_OK, resultData)
+                ListadoProductos().finish()
             }
         }
 
@@ -76,7 +74,6 @@ class CustomAdapter(var context: Context, var product: ArrayList<Product>): Base
     }
 
     override fun getItem(position: Int): Any {
-        System.out.println(position)
         return product.get(position)
     }
 

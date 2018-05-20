@@ -303,7 +303,7 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(context,DATABASE_
         return list
     }
 
-    //Lee la base producto y la carga en la lista
+    //Lee la base producto y devuelve el producto segun el id
     fun leerProducto(Id : Int) : Product{
         var productoVer = Product()
 

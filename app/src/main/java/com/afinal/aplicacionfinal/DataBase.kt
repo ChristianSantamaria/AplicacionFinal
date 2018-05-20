@@ -155,21 +155,21 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(context,DATABASE_
 
     //Insertar totas las comidas a un dia
     fun insertarRutinaModelo(Orden: Int, DesayunoId : Int, AlmuerzoId : Int, ComidaId : Int, MeriendaId : Int, CenaId: Int){
-//        val db = this.writableDatabase
-//        var valores = ContentValues()
-//
-//        valores.put(COL_ORDEN, Orden)
-//        valores.put(COL_ID_DESAYUNO, DesayunoId)
-//        valores.put(COL_ID_ALMUERZO, AlmuerzoId)
-//        valores.put(COL_ID_COMIDA, ComidaId)
-//        valores.put(COL_ID_MERIENDA, MeriendaId)
-//        valores.put(COL_ID_CENA, CenaId)
-//
-//        var result = db.insert(TABLE_RUTINA_MODELO, null, valores)
-//        if(result == -1.toLong())
-//            Toast.makeText(context,"Error",Toast.LENGTH_SHORT).show()
-//        else
-//            Toast.makeText(context,"Insertado " + TABLE_RUTINA_MODELO + " Correctamente",Toast.LENGTH_SHORT).show()
+        val db = this.writableDatabase
+        var valores = ContentValues()
+
+        valores.put(COL_ORDEN, Orden)
+        valores.put(COL_ID_DESAYUNO, DesayunoId)
+        valores.put(COL_ID_ALMUERZO, AlmuerzoId)
+        valores.put(COL_ID_COMIDA, ComidaId)
+        valores.put(COL_ID_MERIENDA, MeriendaId)
+        valores.put(COL_ID_CENA, CenaId)
+
+        var result = db.insert(TABLE_RUTINA_MODELO, null, valores)
+        if(result == -1.toLong())
+            Toast.makeText(context,"Error",Toast.LENGTH_SHORT).show()
+        else
+            Toast.makeText(context,"Insertado " + TABLE_RUTINA_MODELO + " Correctamente",Toast.LENGTH_SHORT).show()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

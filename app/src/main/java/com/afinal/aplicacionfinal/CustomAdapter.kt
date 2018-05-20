@@ -1,5 +1,6 @@
 package com.afinal.aplicacionfinal
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.support.annotation.NonNull
@@ -50,6 +51,12 @@ class CustomAdapter(var context: Context, var product: ArrayList<Product>): Base
             view.btnDelete.setOnClickListener{
                 System.out.println("Pinchaste en el: " + position)
                 db.deleteProduct(position + 1)
+            }
+            view?.setOnClickListener {
+                var resultData = Intent(MainProductActivity().context, NuevoDiaRutina::class.java)
+                resultData.putExtra("producto", product)
+                MainProductActivity().setResult(Activity.RESULT_OK, resultData)
+                MainProductActivity().finish()
             }
         }
         else{

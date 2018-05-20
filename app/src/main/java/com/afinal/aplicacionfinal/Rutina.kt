@@ -11,6 +11,7 @@ import java.util.ArrayList
 
 class Rutina : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     var comidas = arrayOf("Desayuno","Almuerzo","Comida","Merienda","Cena")
+    var productos = ArrayList<String>()
     var request_code = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,19 +26,20 @@ class Rutina : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             val intent = Intent(this,  NuevoDiaRutina::class.java)
             startActivityForResult(intent, request_code)
         }
-
-        @Override
-        fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent){
-            if ((requestCode == request_code) && (resultCode == RESULT_OK)){
-                cargarDatos(data.extras.get("rutinaSeleccionada") as ArrayList<Product>)
-            }
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent){
+        if ((requestCode == request_code) && (resultCode == RESULT_OK)){
+            cargarDatos(data.extras.get("rutinaSeleccionada") as ArrayList<Product>)
         }
     }
 
     fun cargarDatos(list: ArrayList<Product>) {
          list.forEach {
-
+            productos.add(it.name)
          }
+        val p = ArrayAdapter(this, android.R.layout.simple_spinner_item, productos)
+        p.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerProductos!!.setAdapter(p)
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {

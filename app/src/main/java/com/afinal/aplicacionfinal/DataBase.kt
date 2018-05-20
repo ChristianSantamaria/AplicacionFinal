@@ -17,7 +17,7 @@ import java.time.temporal.TemporalQueries.localDate
 
 val DATABASE_NAME ="DataBase"
 
-//Tabla de diseño rutina
+//Tabla de diseño dtrutina
 val TABLE_RUTINA_MODELO="RutinaModelo"
 val COL_ORDEN = "Fecha"
 val COL_ID_DESAYUNO = "Id_Desayuno"
@@ -28,7 +28,7 @@ val COL_ID_CENA = "Id_Cena"
 
 var COL_ID = "Id"
 
-//Tabla de rutina
+//Tabla de dtrutina
 val TABLE_RUTINA="Rutina"
 val COL_FECHA = "Fecha"
 //val COL_ID_DESAYUNO = "Id_Desayuno"
@@ -81,7 +81,7 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(context,DATABASE_
                 COL_ID_CENA + " INTEGER);"
         db?.execSQL(crearTablaRutina)
 
-        //Creacion tabla modelo rutina
+        //Creacion tabla modelo dtrutina
         val crearTablaRutinaModelo = "CREATE TABLE IF NOT EXISTS " + TABLE_RUTINA_MODELO +" (" +
                 COL_ORDEN +" INTEGER PRIMARY KEY AUTOINCREMENT," +
                 COL_ID_DESAYUNO + " INTEGER," +

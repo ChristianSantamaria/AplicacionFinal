@@ -9,41 +9,86 @@ import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_rutina.*
 import java.util.ArrayList
 
-class Rutina : AppCompatActivity(), AdapterView.OnItemSelectedListener {
-    var comidas = arrayOf("Desayuno","Almuerzo","Comida","Merienda","Cena")
+class Rutina : AppCompatActivity() {
+    var comidas = ArrayList<String>()
     var productos = ArrayList<String>()
+    var dias = ArrayList<String>()
+    var rutinas = ArrayList<dtrutina>()
     var request_code = 1
+    var cont = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rutina)
 
-        val aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, comidas)
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerComidas!!.setAdapter(aa)
+        val c = ArrayAdapter(this, android.R.layout.simple_spinner_item, comidas)
+        c.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val p = ArrayAdapter(this, android.R.layout.simple_spinner_item, productos)
+        p.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         newDay.setOnClickListener {
             val intent = Intent(this,  NuevoDiaRutina::class.java)
+            cont++
+            intent.putExtra("day", cont)
             startActivityForResult(intent, request_code)
         }
-    }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent){
-        if ((requestCode == request_code) && (resultCode == RESULT_OK)){
-            cargarDatos(data.extras.get("rutinaSeleccionada") as ArrayList<Product>)
+
+        spinnerDias?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                comidas.clear()
+                rutinas.forEach {
+                    if (it.day.toString().equals(spinnerDias.selectedItem.toString())) {
+                        if (!it.comidas.isEmpty()) {
+                            it.comidas.forEach {
+                                if (!it.productos.isEmpty()) {
+                                    comidas.add(it.tipo)
+                                }
+                            }
+                        }
+                        spinnerComidas!!.adapter = c
+                    }
+                }
+            }
+        }
+        spinnerComidas?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                productos.clear()
+                rutinas.forEach {
+                    if (it.day.toString().equals(spinnerDias.selectedItem.toString())) {
+                        if (!it.comidas.isEmpty()) {
+                            it.comidas.forEach {
+                                if (!it.productos.isEmpty() && it.tipo.equals(spinnerComidas.selectedItem.toString())) {
+                                    it.productos.forEach(){
+                                        productos.add(it.name)
+                                    }
+                                }
+                            }
+                        }
+                        spinnerProductos!!.adapter = p
+                    }
+                }
+            }
         }
     }
 
-    fun cargarDatos(list: ArrayList<Product>) {
-         list.forEach {
-            productos.add(it.name)
-         }
-        val p = ArrayAdapter(this, android.R.layout.simple_spinner_item, productos)
-        p.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerProductos!!.setAdapter(p)
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent){
+        if ((requestCode == request_code) && (resultCode == RESULT_OK)){
+            cargarDatos(data.extras.get("rutinaSeleccionada") as ArrayList<dtrutina>)
+        }
     }
 
-    override fun onNothingSelected(parent: AdapterView<*>?) {
-    }
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+    fun cargarDatos(dtrutina: ArrayList<dtrutina>) {
+        rutinas = dtrutina
+        rutinas.forEach {
+            dias.add(it.day.toString())
+        }
+
+        val d = ArrayAdapter(this, android.R.layout.simple_spinner_item, dias)
+        d.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerDias!!.adapter = d
+
     }
 }

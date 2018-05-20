@@ -9,6 +9,8 @@ import android.support.annotation.RequiresApi
 import android.widget.Toast
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeFormatter.ISO_LOCAL_DATE
+import java.time.format.DateTimeFormatter.ofLocalizedDate
 import java.time.format.FormatStyle
 import java.time.temporal.TemporalQueries.localDate
 
@@ -19,7 +21,7 @@ val DATABASE_NAME ="DataBase"
 
 //Tabla de diseño dtrutina
 val TABLE_RUTINA_MODELO="RutinaModelo"
-val COL_ORDEN = "Fecha"
+val COL_ORDEN = "Orden"
 val COL_ID_DESAYUNO = "Id_Desayuno"
 val COL_ID_ALMUERZO = "Id_Almuerzo"
 val COL_ID_COMIDA = "Id_Comida"
@@ -83,7 +85,7 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(context,DATABASE_
 
         //Creacion tabla modelo dtrutina
         val crearTablaRutinaModelo = "CREATE TABLE IF NOT EXISTS " + TABLE_RUTINA_MODELO +" (" +
-                COL_ORDEN +" INTEGER PRIMARY KEY AUTOINCREMENT," +
+                COL_ORDEN +" INTEGER PRIMARY KEY," +
                 COL_ID_DESAYUNO + " INTEGER," +
                 COL_ID_ALMUERZO +" INTEGER," +
                 COL_ID_COMIDA + " INTEGER," +
@@ -137,11 +139,12 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(context,DATABASE_
     }
 
     //Insertar cualquier hora de comida (desayuno, almuerzo, comida, merienda, cena)
-    fun insertarCualquierComida(product : Product, NombreTabla : String){
+    fun insertarCualquierComida(Orden : Int, IdProducto : Int, NombreTabla : String){
         val db = this.writableDatabase
         var values = ContentValues()
 
-        values.put(COL_ID_PRODUCT, product.id)
+        values.put(COL_ID, Orden)
+        values.put(COL_ID_PRODUCT, IdProducto)
 
         var result = db.insert(NombreTabla, null, values)
         if(result == -1.toLong())
@@ -151,10 +154,11 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(context,DATABASE_
     }
 
     //Insertar totas las comidas a un dia
-    fun insertarRutinaModelo(DesayunoId : String, AlmuerzoId : String, ComidaId : String, MeriendaId : String, CenaId: String){
+    fun insertarRutinaModelo(Orden: Int, DesayunoId : Int, AlmuerzoId : Int, ComidaId : Int, MeriendaId : Int, CenaId: Int){
         val db = this.writableDatabase
         var valores = ContentValues()
 
+        valores.put(COL_ORDEN, Orden)
         valores.put(COL_ID_DESAYUNO, DesayunoId)
         valores.put(COL_ID_ALMUERZO, AlmuerzoId)
         valores.put(COL_ID_COMIDA, ComidaId)
@@ -169,14 +173,13 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(context,DATABASE_
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    //Insertar totas las comidas a un dia
-    fun insertarRutina(Orden : Long, DesayunoId : String, AlmuerzoId : String, ComidaId : String, MeriendaId : String, CenaId: String){
+//Insertar totas las comidas a un dia
+    fun insertarRutina(Orden : Long, DesayunoId : Int, AlmuerzoId : Int, ComidaId : Int, MeriendaId : Int, CenaId: Int){
         val db = this.writableDatabase
         var valores = ContentValues()
 
         val fechaDate = LocalDate.now().plusDays(Orden)
-        val formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy")
-        val fecha = fechaDate.format(formatter)
+        val fecha = fechaDate.format(ISO_LOCAL_DATE)
 
         valores.put(COL_FECHA, fecha)
         valores.put(COL_ID_DESAYUNO, DesayunoId)
@@ -184,6 +187,8 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(context,DATABASE_
         valores.put(COL_ID_COMIDA, ComidaId)
         valores.put(COL_ID_MERIENDA, MeriendaId)
         valores.put(COL_ID_CENA, CenaId)
+
+        System.out.println(fecha +" "+ DesayunoId  +" "+ AlmuerzoId +" "+ ComidaId +" "+ MeriendaId +" "+ CenaId)
 
         var result = db.insert(TABLE_RUTINA, null, valores)
         if(result == -1.toLong())

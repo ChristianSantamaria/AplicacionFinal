@@ -43,6 +43,11 @@ class CustomAdapter(var context: Context, var product: ArrayList<Product>): Base
             viewHolder = ViewHolder(view)
             view.tag = viewHolder
             System.out.println("Si")
+
+            view.setOnClickListener {
+                System.out.println("Pinchaste en el: " + position)
+            }
+
             view.btnDelete.setOnClickListener{
                 System.out.println("Pinchaste en el: " + position)
                 db.deleteProduct(position + 1)
@@ -58,6 +63,11 @@ class CustomAdapter(var context: Context, var product: ArrayList<Product>): Base
             view = convertView
             viewHolder = view.tag as ViewHolder
             System.out.println("No")
+
+            view.setOnClickListener {
+                System.out.println("Pinchaste en el: " + position)
+            }
+
             view.btnDelete.setOnClickListener{
                 System.out.println("Pinchaste en el: " + position)
                 db.deleteProduct(position + 1)
